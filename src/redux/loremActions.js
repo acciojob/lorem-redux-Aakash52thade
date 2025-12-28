@@ -18,12 +18,14 @@ export const fetchLoremFailure = (error) => ({
   payload: error
 });
 
-// Async Thunk Action - Fetches data from API
+// Async Thunk Action - Fetches data from JSONPlaceholder API
+// This returns an array of posts with title and body, perfect for the expected output
 export const fetchLoremData = () => {
   return (dispatch) => {
     dispatch(fetchLoremRequest());
     
-    return fetch('https://jsonplaceholder.typicode.com/posts/')
+    // Using JSONPlaceholder which returns array of posts with title and body
+    return fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -31,6 +33,7 @@ export const fetchLoremData = () => {
         return response.json();
       })
       .then(data => {
+        // Data is already in the format: [{ userId, id, title, body }, ...]
         dispatch(fetchLoremSuccess(data));
       })
       .catch(error => {
