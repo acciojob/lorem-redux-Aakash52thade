@@ -13,24 +13,24 @@ function App() {
 
   return (
     <div className="App">
-      <h1>A short Narration of Lorem Ipsum</h1>
-      <p className="subtitle">Below Contains A title and Body gotten from a random API. Please take your time to Review</p>
+      <h1>A short Naration of Lorem Ipsum</h1>
+      <p className="subtitle">
+        Below Contains A title and Body gotten from a random API. Please take your time to Review
+      </p>
       
-      {loading && <p className="loading">Loading...</p>}
+      {loading && <h4 className="loading">Loading...</h4>}
       
       {error && <p className="error">Error: {error}</p>}
       
-      {data && data.length > 0 && !loading && (
-        <div className="cards-container">
+      {!loading && data && data.length > 0 && (
+        <ul className="posts-list">
           {data.map((post) => (
-            <div key={post.id} className="card">
-              <div className="card-title">Title</div>
-              <p className="title-content">{post.title}</p>
-              <div className="card-body">Body</div>
-              <p className="body-content">{post.body}</p>
-            </div>
+            <li key={post.id} className="post-item">
+              <h4 className="post-title">{post.title}</h4>
+              <p className="post-body">{post.body}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

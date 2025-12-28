@@ -4,10 +4,10 @@ import {
   FETCH_LOREM_FAILURE
 } from './loremActions';
 
-// Initial State
+// Initial State - data should be an empty array
 const initialState = {
-  loading: false,
-  data: null,
+  loading: true,  // Start with loading true for initial state
+  data: [],
   error: null
 };
 
@@ -33,7 +33,7 @@ const loremReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: null,
+        data: [],
         error: action.payload
       };
     
